@@ -1,0 +1,80 @@
+
+.contents h2 {
+  text-align: center;
+  margin: 15px 0;
+}
+.form-control {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+  align-items: center;
+}
+.btn-add {
+  padding: 15px 32px;
+  background-color: #04aa6d;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+}
+.btn-add:hover {
+  cursor: pointer;
+  box-shadow: #333 0px 1px 5px;
+}
+ul li {
+  list-style-type: none;
+}
+ul {
+  padding: 15px;
+}
+.data-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+  padding:20px;
+  flex-wrap: wrap;
+}
+.btn-delete {
+  padding: 15px 32px;
+  background-color: rgb(214, 63, 63);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+}
+.btn-delete:hover {
+  cursor: pointer;
+  box-shadow: #333 0px 1px 5px;
+}
+.input-task {
+  padding: 15px;
+  border: none;
+  flex-grow: 1;
+}
+input {
+  font-size: 20px;
+  outline: none;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  cursor: pointer;
+}
+.menu svg {
+  margin:0 10px;
+}
+.menu .fa-trash:hover {
+  transform: rotate(-10deg);
+  color: #C0392B
+}
+.menu .fa-pen-to-square:hover {
+  transform: rotate(15deg);
+  color: #F4D03F;
+}
+

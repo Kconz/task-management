@@ -1,0 +1,22 @@
+nav {
+    height: auto;
+    background: #ffffff;
+    padding: 15px;
+    width: 100%;
+    border-bottom: 2px solid #555;
+}
+nav.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #444;
+}
+.mode{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.mode h2{
+    margin:15px 15px;
+}
