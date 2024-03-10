@@ -1,20 +1,22 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-import "./navbar.css"
+import "./navbar.css";
 
-function Navbar() {
-  const toggle = () =>{
-    
-  }
+function Navbar(props) {
+  const { toggleTheme, theme } = props;
   return (
     <>
       <nav className="nav-bar">
         <h2>Task Management</h2>
-        <div className="mode" onClick={toggle}>
-          <h2>โหมดกลางวัน</h2>
-          <FontAwesomeIcon icon={faSun} size="2x" />
+        <div className="mode">
+          <h2>{theme === "light-theme" ? "โหมดกลางวัน" : "โหมดกลางคืน"}</h2>
+          {theme === "light-theme" ? (
+            <FontAwesomeIcon icon={faSun} size="2x" onClick={toggleTheme} />
+          ) : (
+            <FontAwesomeIcon icon={faMoon} size="2x" onClick={toggleTheme} />
+          )}
         </div>
       </nav>
     </>

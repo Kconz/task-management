@@ -2,16 +2,31 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
+}
+.App{
+  min-height: 100vh;
 }
 .container {
   max-width: 1200px;
   margin: 15px auto;
   border: 2px solid #e2dada;
   padding: 10px;
+  height: auto;
 }
 .btn {
   padding: 15px 32px;
   border: none;
   font-size: 18px;
   text-decoration: none;
+}
+.light-theme {
+  background: #fff;
+  color: #222;
+  transition: all 0.5s ease-in-out;
+}
+.dark-theme {
+  background: #15202b;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
 }

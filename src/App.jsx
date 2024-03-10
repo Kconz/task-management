@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Contents from "./components/content/Contents";
@@ -8,23 +8,36 @@ function App() {
   // open and close modal
   const [modalOpen, setModalOpen] = useState(false);
   //data tasks list
-  const [tasks, setTask] = useState([
-    { id: 1, task: "การบ้าน" },
-    { id: 2, task: "งานบ้าน" },
-    // { id: 3, task: "กรอกน้ำ" },
-    // { id: 4, task: "กินข้าว" }
-  ]);
-
+  const [tasks, setTask] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+  //theme
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "");
   // This is Title for new Task to Add in list
   const [title, setTitle] = useState("");
   // this is edit data task
   const [editDataTitle, setEditDataTitle] = useState("");
   //this get data task id to be edit
   const [editTaskId, setEditTaskId] = useState(null);
+  // tasks storing to localStorage
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
+  // theme
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
   const deleteTask = (id) => {
     const taskToDelete = tasks.filter((item) => item.id !== id);
     setTask(taskToDelete);
+  };
+  const toggleTheme = () => {
+    if (theme === "light-theme") {
+      setTheme("dark-theme");
+    } else {
+      setTheme("light-theme");
+    }
   };
 
   const handleSubmitTask = (event) => {
@@ -36,7 +49,9 @@ function App() {
         id: Math.floor(Math.random() * 1000),
         task: title,
       };
+      // console.log(localStorage.setItem([...tasks, newTask]));
       setTask([...tasks, newTask]);
+
       setTitle("");
     }
   };
@@ -70,27 +85,29 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <div className="container">
-        <Contents
-          tasks={tasks}
-          deleteTask={deleteTask}
-          setTask={setTask}
-          title={title}
-          setTitle={setTitle}
-          handleSubmitTask={handleSubmitTask}
-          receiveEditId={receiveEditId}
-        />
-
-        {modalOpen && (
-          <EditData
-            closeModal={closeModal}
-            editDataTitle={editDataTitle}
-            editTask={editTask}
-            update={update}
-            setEditDataTitle={setEditDataTitle}
+      <div className={"App " + theme}>
+        <Navbar toggleTheme={toggleTheme} theme={theme} />
+        <div className="container">
+          <Contents
+            tasks={tasks}
+            deleteTask={deleteTask}
+            setTask={setTask}
+            title={title}
+            setTitle={setTitle}
+            handleSubmitTask={handleSubmitTask}
+            receiveEditId={receiveEditId}
           />
-        )}
+
+          {modalOpen && (
+            <EditData
+              closeModal={closeModal}
+              editDataTitle={editDataTitle}
+              editTask={editTask}
+              update={update}
+              setEditDataTitle={setEditDataTitle}
+            />
+          )}
+        </div>
       </div>
     </>
   );
